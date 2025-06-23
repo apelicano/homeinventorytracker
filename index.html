@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Inventory Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Home Inventory Tracker</h1>
+
+  <form id="inventory-form">
+    <label for="item-name">Item Name:</label><br/>
+    <input type="text" id="item-name" required /><br/><br/>
+
+    <label for="item-description">Description / Notes:</label><br/>
+    <textarea id="item-description" required></textarea><br/><br/>
+
+    <div class="form-row">
+      <label for="item-quantity">Quantity:</label>
+      <input type="number" id="item-quantity" min="0" required />
+
+      <label for="item-unit">Unit:</label>
+      <select id="item-unit" required>
+        <option value="pcs">pcs</option>
+        <option value="g">g</option>
+        <option value="kg">kg</option>
+        <option value="mL">mL</option>
+        <option value="L">L</option>
+        <option value="packs">packs</option>
+        <option value="bottles">bottles</option>
+        <option value="containers">containers</option>
+        <option value="boxes">boxes</option>
+        <option value="bars">bars</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="item-category">Category:</label>
+      <select id="item-category" required>
+        <option value="Food">Food</option>
+        <option value="Frozen">Frozen</option>
+        <option value="Cleaning">Cleaning</option>
+        <option value="Toiletries">Toiletries</option>
+        <option value="Kitchen">Kitchen</option>
+        <option value="Misc">Misc</option>
+      </select>
+    </div>
+
+    <br/><br/>
+    <button type="submit">Add Item</button>
+  </form>
+
+  <div id="timestamp-toggle-wrapper" style="display: none; margin-top: 1rem;">
+    <label>
+      <input type="checkbox" id="toggle-timestamp-checkbox" />
+      Show Timestamps
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label for="filter-category">Filter by category:</label><br/>
+    <select id="filter-category">
+      <option value="All">All</option>
+    </select>
+  </div>
+
+  <div id="inventory-list"></div>
+
+  <div style="margin-top: 1rem;">
+    <button id="clear-all-btn">Clear All Items</button>
+  </div>
+
+  <button id="toggle-archived-btn" style="margin-top: 1rem;">Show Archived Items</button>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+</body>
+</html>
